@@ -10,6 +10,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
     <div class="p-5 bg-primary text-white text-center">
@@ -23,14 +24,20 @@
     <div class="container">
       <div class="row height d-flex justify-content-center align-items-center">
         <div class="col-md-8">
+          Gebe ein KFZ Kennzeichen ein, welches du auf der Karte angezeigt haben willst. Bsp: D, DU, HH
           <div class="search">
             <i class="fa fa-search"></i>
-            <input type="text" class="form-control" placeholder="Kennzeichen" />
+            <input type="text" class="form-control" placeholder="Kennzeichen" id="kfz" name="kfz" pattern="[a-zA-ZÄÜÖäöü]" minlength="1" maxlength="3"/>
             <button class="btn btn-primary">Suche</button>
           </div>
+          <div id="output">Letzte Suche:</div>
         </div>
       </div>
     </div>
+
+
+    <script src="search.js"></script>
+
 
     <div class="mt-5 p-4 bg-dark text-white text-center">
       <small>&copy; Copyright 2023, Kyra Lux</small>
