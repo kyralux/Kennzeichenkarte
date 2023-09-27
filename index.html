@@ -27,9 +27,10 @@
           Gebe ein KFZ Kennzeichen ein, welches du auf der Karte angezeigt haben willst. Bsp: D, DU, HH
           <div class="search">
             <i class="fa fa-search"></i>
-            <input type="text" class="form-control" placeholder="Kennzeichen" id="kfz" name="kfz" pattern="[a-zA-ZÄÜÖäöü]" minlength="1" maxlength="3"/>
+            <input type="text" class="form-control" placeholder="Kennzeichen" id="searchTerm" name="searchTerm" pattern="[a-zA-ZÄÜÖäöü]" minlength="1" maxlength="3"/>
             <button class="btn btn-primary">Suche</button>
           </div>
+          <div id="error"></div>
           <div id="output">Letzte Suche:</div>
         </div>
       </div>
