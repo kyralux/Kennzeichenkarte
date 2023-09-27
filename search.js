@@ -1,4 +1,7 @@
+let dictionary;
+
 document.addEventListener('DOMContentLoaded', function () {
+    loadJson()
     var searchButton = document.querySelector('.btn-primary');
     var searchTerm = document.querySelector('#searchTerm');
     var outputDiv = document.querySelector('#output');
@@ -11,8 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var inputValue = searchTerm.value.trim().toUpperCase();
         if (isInputValid(inputValue)) {
             var newRow = document.createElement('div');
-            newRow.textContent = inputValue;
-            outputDiv.replaceChild(newRow, outputDiv.children[0]);
+
+            // match KFZ -> stadt
+            if (dictionary.hasOwnProperty(inputValue)) {
+                newRow.textContent = dictionary[inputValue];
+                outputDiv.replaceChild(newRow, outputDiv.children[0]);
+            } else {
+                newRow.textContent = `Kein gültiges KFZ-Kennzeichen: ${inputValue}`;
+                errorDiv.replaceChild(newRow, errorDiv.children[0]);
+            }
         } else {
             var newRow = document.createElement('div');
             newRow.textContent = "Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert";
@@ -35,5 +45,21 @@ function isKFZPattern(inputValue){
     var regexPattern = /[a-zA-ZÄÜÖäöü]{1,3}/;
     var regex = new RegExp(regexPattern);
     return regex.test(inputValue);
+}
+
+function loadJson(){
+    return fetch('kfzDict.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            dictionary = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
