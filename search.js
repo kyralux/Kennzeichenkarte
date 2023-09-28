@@ -37,16 +37,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function searchCity(city) {
     // Use the Nominatim geocoding service to get coordinates for the city
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${city}&countrycodes=de`)
+    //name:prefix
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${city}&countrycodes=de&layer=address`)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if (data.length > 0) {
-                var latitude = parseFloat(data[0].lat);
-                var longitude = parseFloat(data[0].lon);
-                markersLayer.clearLayers();
-                map.setView([latitude, longitude], 10);
-                curMarker = L.marker([latitude, longitude]).addTo(markersLayer);
-            } else {
+                for (var dp of data){
+                    if(dp.addresstype=="city" || dp.addresstype=="county" || dp.addresstype=="town"){
+                        var latitude = parseFloat(dp.lat);
+                        var longitude = parseFloat(dp.lon);
+                        markersLayer.clearLayers();
+                        map.setView([latitude, longitude], 10);
+                        curMarker = L.marker([latitude, longitude]).addTo(markersLayer);
+                        break;
+                    }
+                    console.error(`Couldn't find a matching entry for ${city}`)
+                }
+                            } else {
                 alert('City not found');
             }
         })
@@ -91,7 +99,7 @@ function isKFZPattern(inputValue){
 
 async function loadJson(){
     try {
-        const response = await fetch('kfzDict.json');
+        const response = await fetch('kfzDict2.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

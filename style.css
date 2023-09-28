@@ -3,12 +3,11 @@ body {
 }
 
 .height {
-  height: 50vh;
+  height: 20vh;
 }
 
 .search {
   position: relative;
-  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
 }
 
 .search input {
@@ -38,7 +37,12 @@ body {
 }
 
 #map { 
-    height: 500px;
-    width: 80%; 
-    margin: 0 auto
+  height: 500px;
+  width: 80%; 
+  margin: 0 auto
+}
+
+.error-text {
+  color: red;
+
 }
