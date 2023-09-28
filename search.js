@@ -1,11 +1,11 @@
 let dictionary;
+var errorDiv = document.querySelector('#error');
+var outputDiv = document.querySelector('#output');
 
 document.addEventListener('DOMContentLoaded', function () {
     loadJson()
     var searchButton = document.querySelector('.btn-primary');
     var searchTerm = document.querySelector('#searchTerm');
-    var outputDiv = document.querySelector('#output');
-    var errorDiv = document.querySelector('#error');
 
     outputDiv.appendChild(document.createElement('div'))
     errorDiv.appendChild(document.createElement('div'))
@@ -13,24 +13,37 @@ document.addEventListener('DOMContentLoaded', function () {
     searchButton.addEventListener('click', function () {
         var inputValue = searchTerm.value.trim().toUpperCase();
         if (isInputValid(inputValue)) {
-            var newRow = document.createElement('div');
 
-            // match KFZ -> stadt
             if (dictionary.hasOwnProperty(inputValue)) {
-                newRow.textContent = dictionary[inputValue];
-                outputDiv.replaceChild(newRow, outputDiv.children[0]);
+                writeOutput(`${inputValue} - ${dictionary[inputValue]}`)
+                clearErrorDiv();
             } else {
-                newRow.textContent = `Kein gültiges KFZ-Kennzeichen: ${inputValue}`;
-                errorDiv.replaceChild(newRow, errorDiv.children[0]);
+                writeError(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
             }
         } else {
-            var newRow = document.createElement('div');
-            newRow.textContent = "Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert";
-            errorDiv.replaceChild(newRow, errorDiv.children[0]);    
+            writeError("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
         }
         searchTerm.value = '';
     });
 });
+
+function clearErrorDiv(){
+    var newRow = document.createElement('div');
+    newRow.textContent = ``;
+    errorDiv.replaceChild(newRow, errorDiv.children[0]);
+}
+
+function writeOutput(text){
+    var newRow = document.createElement('div');
+    newRow.textContent = text;
+    outputDiv.replaceChild(newRow, outputDiv.children[0]);
+}
+
+function writeError(text){
+    var newRow = document.createElement('div');
+    newRow.textContent = text;
+    errorDiv.replaceChild(newRow, errorDiv.children[0]);
+}
 
 function isInputValid(inputValue) {
     if(inputValue != '' && isKFZPattern(inputValue)){
