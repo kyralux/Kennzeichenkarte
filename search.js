@@ -42,7 +42,7 @@ function searchCity(city) {
             console.log(data)
             if (data.length > 0) {
                 for (var dp of data){
-                    if(dp.addresstype=="city" || dp.addresstype=="county" || dp.addresstype=="town"){
+                    if (["city", "county", "town", "state"].includes(dp.addresstype)) {
                         var latitude = parseFloat(dp.lat);
                         var longitude = parseFloat(dp.lon);
                         markersLayer.clearLayers();
