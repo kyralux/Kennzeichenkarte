@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isInputValid(inputValue)) {
 
             if (dictionary.hasOwnProperty(inputValue)) {
-                var city = dictionary[inputValue];
-                writeOutput(`${inputValue} - ${city}`)
+                var [area, city, bundesland] = dictionary[inputValue].split(":");
+                writeOutput(`${inputValue} - ${city} - ${area} - ${bundesland}`)
                 clearErrorDiv();
                 searchCity(city)
 
@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function searchCity(city) {
-    // Use the Nominatim geocoding service to get coordinates for the city
-    //name:prefix
     fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${city}&countrycodes=de&layer=address`)
         .then(response => response.json())
         .then(data => {
@@ -99,7 +97,7 @@ function isKFZPattern(inputValue){
 
 async function loadJson(){
     try {
-        const response = await fetch('kfzDict2.json');
+        const response = await fetch('kfzDict3.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
