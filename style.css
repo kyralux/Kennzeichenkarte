@@ -2,12 +2,9 @@ body {
   background-color: #eee;
 }
 
-.height {
-  height: 20vh;
-}
-
 .search {
   position: relative;
+  width: 50%;
 }
 
 .search input {
