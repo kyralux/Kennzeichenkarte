@@ -19,10 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isInputValid(inputValue)) {
 
             if (dictionary.hasOwnProperty(inputValue)) {
-                var [area, city, bundesland] = dictionary[inputValue].split(":");
+                var [area, city, bundesland, longitude, latitude] = dictionary[inputValue].split(":");
                 writeOutput(`${inputValue} - ${city} - ${area} - ${bundesland}`)
                 clearErrorDiv();
-                searchCity(city)
+                if(longitude=="0" && latitude=="0"){
+                    writeError("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
+                }
+                markersLayer.clearLayers();
+                map.setView([parseFloat(latitude), parseFloat(longitude)], 10);
+                curMarker = L.marker([parseFloat(latitude),  parseFloat(longitude)]).addTo(markersLayer);
 
             } else {
                 writeError(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
@@ -33,33 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         searchTerm.value = '';
     });
 });
-
-
-function searchCity(city) {
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${city}&countrycodes=de&layer=address`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            if (data.length > 0) {
-                for (var dp of data){
-                    if (["city", "county", "town", "state"].includes(dp.addresstype)) {
-                        var latitude = parseFloat(dp.lat);
-                        var longitude = parseFloat(dp.lon);
-                        markersLayer.clearLayers();
-                        map.setView([latitude, longitude], 10);
-                        curMarker = L.marker([latitude, longitude]).addTo(markersLayer);
-                        break;
-                    }
-                    console.error(`Couldn't find a matching entry for ${city}`)
-                }
-                            } else {
-                alert('City not found');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
 
 
 function clearErrorDiv(){
@@ -97,7 +75,7 @@ function isKFZPattern(inputValue){
 
 async function loadJson(){
     try {
-        const response = await fetch('kfzDict3.json');
+        const response = await fetch('kfzDict4.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
