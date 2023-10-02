@@ -1,5 +1,32 @@
 body {
-  background-color: #eee;
+  background-color: white;
+}
+
+.header {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.header-content {
+  position: absolute;
+  top: 0; /* Position content at the top of the header */
+  left: 0; /* Position content at the left of the header */
+  right: 0; /* Position content at the right of the header */
+  bottom: 0; /* Position content at the bottom of the header */
+  text-align: center; /* Center-align text within the header */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cropped {
+  object-fit: cover;
+  object-position: bottom;
+  height: 100%; /* Take up the full height of the container */
+  width: 100%;
 }
 
 .search {
@@ -33,8 +60,8 @@ body {
   background: blue;
 }
 
-#map { 
-  height: 500px;
+#map {
+  padding-bottom: 40%;
   width: 80%; 
   margin: 0 auto
 }
@@ -43,3 +70,6 @@ body {
   color: red;
 
 }
+/* when page is resized very small, replace header image with 100px without image */
+/* when page is biggest, i want to have the map smaller 
+somehow its also not centered anymore, the city in the map*/

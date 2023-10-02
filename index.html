@@ -19,18 +19,15 @@
       crossorigin=""></script>
   </head>
   <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 p-5 bg-primary text-white text-center">
-        <h1>KFZ-Kennzeichen</h1>
-        <p>
-          Gebe ein KFZ-Kennzeichen ein und es zeigt dir auf der Karte an wo es
-          ist.
-        </p>
+    <header class="header">
+      <img src="header.jpg" alt="Header Image" class="img-fluid cropped">
+      <div class="header-content">
+          <h1 class="text-center">Kennzeichenkarte.de</h1>
       </div>
-    </div>
+    </header>
 
 
+  <div class="container">
     <div class="row">
       <div class="col-12 d-flex justify-content-center align-items-center p-2">
         Gebe ein KFZ Kennzeichen ein, welches du auf der Karte angezeigt haben willst. Bsp: D, DU, HH
@@ -41,7 +38,7 @@
       <div class="col-12 d-flex justify-content-center align-items-center p-2">
         <div class="search">
           <i class="fa fa-search"></i>
-          <input type="text" class="form-control" placeholder="Kennzeichen" id="searchTerm" name="searchTerm" pattern="[a-zA-ZÄÜÖäöü]" minlength="1" maxlength="3"/>
+          <input type="text" class="form-control" placeholder="Kennzeichen" id="searchTerm" name="searchTerm" minlength="1" maxlength="3"/>
           <button class="btn btn-primary">Suche</button>
         </div>
       </div>
@@ -55,7 +52,7 @@
 
     <div class="row">
       <div class="col-12 d-flex justify-content-center align-items-center p-2">
-        <div id="output">Letzte Suche:</div>
+        <div id="output"></div>
       </div>
     </div>
 
@@ -70,7 +67,7 @@
 
 
     <div class="mt-5 p-4 bg-dark text-white text-center">
-      <small>&copy; Copyright 2023, Kyra Lux</small>
+      <p>&copy; 2023 Kyra Lux. Alle Rechte vorbehalten. Foto von Tabea Schimpf von Unsplash</p>
     </div>
   </body>
 </html>
