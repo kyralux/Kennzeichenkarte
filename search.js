@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (dictionary.hasOwnProperty(inputValue)) {
                 var [area, city, bundesland, longitude, latitude] = dictionary[inputValue].split(":");
-                writeOutput(`${inputValue} - ${city} - ${area} - ${bundesland}`)
+                writeOutput(`${inputValue} - ${city} - ${area}, ${bundesland}`)
                 clearErrorDiv();
                 if(longitude=="0" && latitude=="0"){
                     writeError("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
