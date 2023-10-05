@@ -31,13 +31,14 @@ body {
 
 .search {
   position: relative;
-  width: 50%;
+  max-width: 50%;
 }
 
 .search input {
   height: 60px;
   text-indent: 25px;
   border: 2px solid #d6d4d4;
+  max-width: max-content;
 }
 
 .search input:focus {
@@ -56,7 +57,7 @@ body {
   top: 5px;
   right: 5px;
   height: 50px;
-  width: 110px;
+  width: 80px;
   background: blue;
 }
 
@@ -68,8 +69,4 @@ body {
 
 .error-text {
   color: red;
-
 }
-/* when page is resized very small, replace header image with 100px without image */
-/* when page is biggest, i want to have the map smaller 
-somehow its also not centered anymore, the city in the map*/

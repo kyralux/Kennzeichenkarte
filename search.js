@@ -15,35 +15,44 @@ document.addEventListener('DOMContentLoaded', function () {
     errorDiv.appendChild(document.createElement('div'))
 
     searchButton.addEventListener('click', function () {
-        var inputValue = searchTerm.value.trim().toUpperCase();
-        if (isInputValid(inputValue)) {
-
-            if (dictionary.hasOwnProperty(inputValue)) {
-                var [area, city, bundesland, longitude, latitude] = dictionary[inputValue].split(":");
-                writeOutput(`${inputValue} - ${city} - ${area}, ${bundesland}`)
-                clearErrorDiv();
-                if(longitude=="0" && latitude=="0"){
-                    writeError("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
-                }
-                markersLayer.clearLayers();
-                map.setView([parseFloat(latitude), parseFloat(longitude)], 10);
-                curMarker = L.marker([parseFloat(latitude),  parseFloat(longitude)]).addTo(markersLayer);
-
-            } else {
-                writeError(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
-            }
-        } else {
-            writeError("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
-        }
-        searchTerm.value = '';
+        handleClick();
     });
 });
 
+
+function handleClick(){
+    var inputValue = searchTerm.value.trim().toUpperCase();
+    if (isInputValid(inputValue)) {
+        if (dictionary.hasOwnProperty(inputValue)) {
+            var [area, city, bundesland, longitude, latitude] = dictionary[inputValue].split(":");
+            writeOutput(`${inputValue} - ${city} - ${area}, ${bundesland}`)
+            clearErrorDiv();
+            if(longitude=="0" && latitude=="0"){
+                writeError("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
+                resetMap()
+            } else {
+                markersLayer.clearLayers();
+                map.setView([parseFloat(latitude), parseFloat(longitude)], 10);
+                curMarker = L.marker([parseFloat(latitude),  parseFloat(longitude)]).addTo(markersLayer);
+            }
+        } else {
+            writeError(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
+        }
+    } else {
+        writeError("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
+    }
+    searchTerm.value = '';
+}
 
 function clearErrorDiv(){
     var newRow = document.createElement('div');
     newRow.textContent = ``;
     errorDiv.replaceChild(newRow, errorDiv.children[0]);
+}
+
+function resetMap(){
+    markersLayer.clearLayers();
+    map.setView([51.1657, 10.4515], 6);
 }
 
 function writeOutput(text){
