@@ -84,7 +84,7 @@ function isKFZPattern(inputValue){
 
 async function loadJson(){
     try {
-        const response = await fetch('kfzDict4.json');
+        const response = await fetch('kfzDict.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
