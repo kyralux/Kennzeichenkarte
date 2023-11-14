@@ -18,6 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -69,4 +70,10 @@ body {
 
 .error-text {
   color: red;
+}
+
+.shadow-box {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Adjust values as needed */
+  padding: 20px; /* Add some padding to see the shadow effect */
+  background-color: pink;
 }
