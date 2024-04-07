@@ -4,18 +4,15 @@ body {
 
 .header {
   height: 200px;
-  overflow: hidden;
   position: relative;
 }
 
 .header-content {
   position: absolute;
-  top: 0; /* Position content at the top of the header */
-  left: 0; /* Position content at the left of the header */
-  right: 0; /* Position content at the right of the header */
-  bottom: 0; /* Position content at the bottom of the header */
-  text-align: center; /* Center-align text within the header */
-  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0; 
+  bottom: 0; 
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -24,42 +21,29 @@ body {
 }
 
 .cropped {
-  object-fit: cover;
-  object-position: bottom;
-  height: 100%; /* Take up the full height of the container */
-  width: 100%;
+  height: 100%;
 }
 
 .search {
   position: relative;
-  max-width: 50%;
 }
 
 .search input {
-  height: 60px;
-  text-indent: 25px;
+  text-indent: 5%;
   border: 2px solid #d6d4d4;
-  max-width: max-content;
+  width: 100px
 }
 
 .search input:focus {
   box-shadow: none;
-  border: 2px solid blue;
-}
-
-.search .fa-search {
-  position: absolute;
-  top: 20px;
-  left: 16px;
+  border: 2px solid darkblue;
 }
 
 .search button {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 50px;
-  width: 80px;
-  background: blue;
+  top: 1px;
+  right: 0px;
+  background: darkblue;
 }
 
 #map {
@@ -70,10 +54,4 @@ body {
 
 .error-text {
   color: red;
-}
-
-.shadow-box {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Adjust values as needed */
-  padding: 20px; /* Add some padding to see the shadow effect */
-  background-color: pink;
 }
