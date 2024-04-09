@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var searchButton = document.querySelector('.btn-primary');
     var searchTerm = document.querySelector('#searchTerm');
 
-    outputDiv.appendChild(document.createElement('div'))
+    outputDiv.appendChild(document.createElement('h5'))
     errorDiv.appendChild(document.createElement('div'))
 
     searchButton.addEventListener('click', function () {
@@ -22,13 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function handleClick(){
     var inputValue = searchTerm.value.trim().toUpperCase();
+
     if (isInputValid(inputValue)) {
         if (dictionary.hasOwnProperty(inputValue)) {
             var [area, city, bundesland, longitude, latitude] = dictionary[inputValue].split(":");
             writeOutput(`${inputValue} - ${city} - ${area}, ${bundesland}`)
-            clearErrorDiv();
+            hideAlert();
             if(longitude=="0" && latitude=="0"){
-                writeError("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
+                showAlert("Keine Position gefunden. Wahrscheinlich handelt es sich nicht um eine Stadt.")
                 resetMap()
             } else {
                 markersLayer.clearLayers();
@@ -36,19 +37,15 @@ function handleClick(){
                 curMarker = L.marker([parseFloat(latitude),  parseFloat(longitude)]).addTo(markersLayer);
             }
         } else {
-            writeError(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
+            showAlert(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
         }
     } else {
-        writeError("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
+        showAlert("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
     }
     searchTerm.value = '';
 }
 
-function clearErrorDiv(){
-    var newRow = document.createElement('div');
-    newRow.textContent = ``;
-    errorDiv.replaceChild(newRow, errorDiv.children[0]);
-}
+
 
 function resetMap(){
     markersLayer.clearLayers();
@@ -56,15 +53,14 @@ function resetMap(){
 }
 
 function writeOutput(text){
-    var newRow = document.createElement('div');
+    var newRow = document.createElement('h5');
     newRow.textContent = text;
     outputDiv.replaceChild(newRow, outputDiv.children[0]);
 }
 
 function writeError(text){
-    var newRow = document.createElement('div');
-    newRow.textContent = text;
-    errorDiv.replaceChild(newRow, errorDiv.children[0]);
+    var alertDiv = document.getElementById('error');
+    alertDiv.innerHTML = text;
 }
 
 function isInputValid(inputValue) {
@@ -105,3 +101,14 @@ function initMap(){
     markersLayer = L.layerGroup().addTo(map);
 }
 
+
+function showAlert(message) {
+    var alertDiv = document.getElementById('error');
+    alertDiv.innerHTML = message + '<button type="button" class="btn-close" onclick="hideAlert()" aria-label="Close"></button>';
+    alertDiv.style.display = 'block';
+  }
+
+function hideAlert() {
+    var alertDiv = document.getElementById('error');
+    alertDiv.style.display = 'none';
+}

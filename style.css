@@ -22,28 +22,7 @@ body {
 
 .cropped {
   height: 100%;
-}
-
-.search {
-  position: relative;
-}
-
-.search input {
-  text-indent: 5%;
-  border: 2px solid #d6d4d4;
-  width: 100px
-}
-
-.search input:focus {
-  box-shadow: none;
-  border: 2px solid darkblue;
-}
-
-.search button {
-  position: absolute;
-  top: 1px;
-  right: 0px;
-  background: darkblue;
+  width: 100%;
 }
 
 #map {
@@ -54,4 +33,23 @@ body {
 
 .error-text {
   color: red;
+}
+
+.search-button {
+}
+
+
+.card-header {
+  border-bottom: 3px solid #39c0ed;
+  background: transparent;
+  text-align: center;
+}
+
+.form-control {
+  border-color: transparent;
+}
+
+.input-group>.form-control:focus {
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px transparent;
 }

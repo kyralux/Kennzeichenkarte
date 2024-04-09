@@ -47,48 +47,30 @@
 
     <div class="row p-3">
       <div class="col-12 d-flex justify-content-center align-items-center p-2">
-          <p>Finde schnell heraus, welche Stadt zu einem deutschen Autokennzeichen gehört! Gib einfach das Kennzeichen ein und sieh dir die passende Stadt auf der Karte an.</p>
+          <p>Finde schnell heraus, welche Stadt zu einem deutschen Autokennzeichen gehört! 
+            Gib einfach das Kennzeichen ein und sieh dir die passende Stadt auf der Karte an.</p>
       </div>
     </div>
-
-    <div class="row p-3">
-      <div class="col-12 d-flex justify-content-center align-items-center p-2">
-        <div class="search">
-          <input type="text" class="form-control" placeholder="KFZ" id="searchTerm" name="searchTerm" minlength="1" maxlength="3"/>
-          <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center align-items-center p-2">
-        <div id="error" class="error-text"></div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center align-items-center p-2">
-        <div id="output"></div>
-      </div>
-    </div>
-
-    <script src="search.js"></script>
-
-    <div class="row">
-      <div class="col-12 p-2">
-          <div id="map"></div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center align-items-center p-2">
-        <p>Letztes Update der Kennzeichen: 14.10.2023</p>
-      </div>
+    <div id="error" class="alert alert-danger">Keine passende Position gefunden</div>
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control form-control-lg rounded" placeholder="KFZ" id="searchTerm" minlength="1" maxlength="3"/>
+      <button class="btn btn-primary search-button"><i class="fa fa-search"></i></button>
     </div>
   </div>
- 
-  <div class="mt-5 p-4 bg-dark text-white text-center">
-    <p></p>
+
+
+  <div class="card">
+    <div id="output" class="card-header">
+      <h5></h5>
+    </div>
+    <div class="card-body">
+      <div id="map"></div>
+    </div>
   </div>
+  
+  <p class="d-flex justify-content-center align-items-center p-5 small">Letztes Update der Kennzeichen: 14.10.2023</p>
+  
+  <div class="mt-5 p-4 bg-dark text-white text-center"><p></p></div>
+  <script src="search.js"></script>         
   </body>
 </html>
