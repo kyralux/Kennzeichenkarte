@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 function handleClick(){
     var inputValue = searchTerm.value.trim().toUpperCase();
 
@@ -45,8 +44,6 @@ function handleClick(){
     searchTerm.value = '';
 }
 
-
-
 function resetMap(){
     markersLayer.clearLayers();
     map.setView([51.1657, 10.4515], 6);
@@ -67,7 +64,6 @@ function isInputValid(inputValue) {
     if(inputValue != '' && isKFZPattern(inputValue)){
         return true;
     } else {
-        console.log("Input invalid")
         return false
     }
 }
@@ -101,12 +97,11 @@ function initMap(){
     markersLayer = L.layerGroup().addTo(map);
 }
 
-
 function showAlert(message) {
     var alertDiv = document.getElementById('error');
-    alertDiv.innerHTML = message + '<button type="button" class="btn-close" onclick="hideAlert()" aria-label="Close"></button>';
+    alertDiv.innerHTML = message + '<button type="button" class="btn-close" onclick="hideAlert()" aria-label="Close" style="float: right"></button>';
     alertDiv.style.display = 'block';
-  }
+}
 
 function hideAlert() {
     var alertDiv = document.getElementById('error');

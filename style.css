@@ -31,25 +31,26 @@ body {
   margin: 0 auto
 }
 
-.error-text {
-  color: red;
+.card {
+  border: none;
 }
-
-.search-button {
-}
-
 
 .card-header {
-  border-bottom: 3px solid #39c0ed;
-  background: transparent;
-  text-align: center;
+  border-bottom: 4px solid #0d6efd;
+  /* background-color:  lightyellow; */
 }
 
 .form-control {
   border-color: transparent;
 }
 
-.input-group>.form-control:focus {
-  border-color: transparent;
-  box-shadow: inset 0 0 0 1px transparent;
+.input-group {
+  width: 50%;
+  margin: auto;
+  border:2px solid #0d6efd;
+  border-radius: 10px;
+}
+
+#error {
+  display: none;
 }

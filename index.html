@@ -24,7 +24,6 @@
     <!-- Matomo -->
     <script>
       var _paq = window._paq = window._paq || [];
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
@@ -37,39 +36,43 @@
     </script>
   </head>
   <body>
-    <header class="header">
-      <img src="header-cropped.jpeg" alt="Header Image" class="img-fluid cropped">
-      <div class="header-content">
-          <h1 class="text-center">Kennzeichenkarte.de</h1>
-          <p class="text-center">NE, SL, WES? Für welche Stadt steht das Kennzeichen? Und wo ist das?</p>
-      </div>
-    </header>
 
-    <div class="row p-3">
-      <div class="col-12 d-flex justify-content-center align-items-center p-2">
-          <p>Finde schnell heraus, welche Stadt zu einem deutschen Autokennzeichen gehört! 
-            Gib einfach das Kennzeichen ein und sieh dir die passende Stadt auf der Karte an.</p>
-      </div>
+  <!-- HEADER -->
+  <header class="header">
+    <img src="header-cropped.jpeg" alt="Header Image" class="img-fluid cropped">
+    <div class="header-content">
+        <h1 class="text-center">Kennzeichenkarte.de</h1>
+        <p class="text-center">NE, SL, WES? Für welche Stadt steht das Kennzeichen? Und wo ist das?</p>
     </div>
-    <div id="error" class="alert alert-danger">Keine passende Position gefunden</div>
-    <div class="input-group input-group-lg">
-      <input type="text" class="form-control form-control-lg rounded" placeholder="KFZ" id="searchTerm" minlength="1" maxlength="3"/>
-      <button class="btn btn-primary search-button"><i class="fa fa-search"></i></button>
+  </header>
+
+  <div class="row p-3">
+    <div class="col-12 d-flex justify-content-center align-items-center p-2">
+        <p>Finde schnell heraus, welche Stadt zu einem deutschen Autokennzeichen gehört! 
+          Gib einfach das Kennzeichen ein und sieh dir die passende Stadt auf der Karte an.</p>
     </div>
   </div>
 
+  <!-- SEARCH -->
+  <div id="error" class="alert alert-danger"></div>
+  <div class="input-group input-group-lg text-center">
+    <input type="text" class="form-control form-control-lg rounded" placeholder="KFZ" id="searchTerm" minlength="1" maxlength="3"/>
+    <button class="btn btn-primary search-button"><i class="fa fa-search"></i></button>
+  </div>
 
-  <div class="card">
+  <!-- RESULT -->
+  <div class="card text-center p-5">
     <div id="output" class="card-header">
-      <h5></h5>
+      <h5>-</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body p-5">
       <div id="map"></div>
     </div>
   </div>
   
   <p class="d-flex justify-content-center align-items-center p-5 small">Letztes Update der Kennzeichen: 14.10.2023</p>
   
+  <!-- FOOTER -->
   <div class="mt-5 p-4 bg-dark text-white text-center"><p></p></div>
   <script src="search.js"></script>         
   </body>
