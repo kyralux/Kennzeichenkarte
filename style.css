@@ -53,4 +53,7 @@ body {
 
 #error {
   display: none;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5px;
 }
