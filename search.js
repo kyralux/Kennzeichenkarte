@@ -34,6 +34,8 @@ function handleClick(){
                 markersLayer.clearLayers();
                 map.setView([parseFloat(latitude), parseFloat(longitude)], 10);
                 curMarker = L.marker([parseFloat(latitude),  parseFloat(longitude)]).addTo(markersLayer);
+                mapDiv = document.getElementById('map');
+                mapDiv.focus();
             }
         } else {
             showAlert(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)

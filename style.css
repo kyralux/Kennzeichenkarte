@@ -1,3 +1,9 @@
+/* html, body {
+  heigth: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
 body {
   background-color: white;
 }
@@ -20,6 +26,17 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.divider {
+  width: 80%;
+  margin: 0 auto;
+  border-top: 2px solid #000;
+  margin: 50px auto;
+}
+
+.heading {
+  font-family: sans-serif;
+}
+
 .cropped {
   height: 100%;
   width: 100%;
@@ -37,7 +54,11 @@ body {
 
 .card-header {
   border-bottom: 4px solid #0d6efd;
-  /* background-color:  lightyellow; */
+}
+
+.card-body {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: none;
 }
 
 .form-control {
@@ -45,7 +66,7 @@ body {
 }
 
 .input-group {
-  width: 50%;
+  width: 16ch;
   margin: auto;
   border:2px solid #0d6efd;
   border-radius: 10px;
@@ -53,7 +74,6 @@ body {
 
 #error {
   display: none;
-  width: 50%;
   margin: auto;
   margin-bottom: 5px;
 }
