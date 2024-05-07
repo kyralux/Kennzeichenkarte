@@ -1,15 +1,21 @@
 let dictionary;
 let map;
 let markersLayer;
+var inputField = document.querySelector('#searchTerm')
 var errorDiv = document.querySelector('#error');
 var outputDiv = document.querySelector('#output');
 
+inputField.addEventListener("keyup", function(event) {
+    // handle enter
+    if (event.keyCode === 13) {
+      handleClick();
+    }
+  });
 
 document.addEventListener('DOMContentLoaded', function () {
     loadJson();
     initMap();
     var searchButton = document.querySelector('.btn-primary');
-    var searchTerm = document.querySelector('#searchTerm');
 
     outputDiv.appendChild(document.createElement('h5'))
     errorDiv.appendChild(document.createElement('div'))
