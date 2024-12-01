@@ -47,7 +47,7 @@ function handleClick(){
             showAlert(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`)
         }
     } else {
-        showAlert("Falsches Format, nur gültige KFZ-Kennzeichen werden akzeptiert") 
+        showAlert(`Kein gültiges KFZ-Kennzeichen: ${inputValue}`) 
     }
     searchTerm.value = '';
 }
