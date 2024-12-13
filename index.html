@@ -23,15 +23,15 @@
 
     <!-- Matomo -->
     <script>
-      var _paq = window._paq = window._paq || [];
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="//matomo.kyralux.de/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      (async function loadMatomo() {
+          const response = await fetch('matomo-tracker.js', { method: 'HEAD' });
+          if (response.ok) {
+            const script = document.createElement('script');
+            script.src = 'matomo-tracker.js';
+            document.head.appendChild(script);
+          } else {
+            console.log('matomo-tracker.js not found, skipping Matomo tracking.');
+          }
       })();
     </script>
   </head>
